@@ -6,34 +6,19 @@
 <title>MS v hokeji 2026 – Tipovanie rodiny</title>
 <style>
   :root {
-    --bg: #f7f6f2;
-    --surface: #ffffff;
-    --border: #e4e2da;
-    --border-strong: #c8c5bb;
-    --text: #1a1a18;
-    --text-muted: #6b6960;
-    --text-hint: #9e9c94;
-    --blue: #c0392b;
-    --blue-bg: #fdecea;
-    --blue-text: #922b21;
-    --green: #2a7c3f;
-    --green-bg: #e8f5ec;
-    --green-text: #1e5c2e;
-    --red: #b3261e;
-    --red-bg: #fdecea;
-    --red-text: #8c1d18;
-    --amber: #7c5a0a;
-    --amber-bg: #fef5e0;
-    --amber-text: #5c4208;
-    --pink-bg: #fdeef4;
-    --pink-text: #8b2252;
-    --radius: 10px;
-    --radius-sm: 6px;
-    --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+    --bg: #f7f6f2; --surface: #fff; --border: #e4e2da; --text: #1a1a18;
+    --text-muted: #6b6960; --text-hint: #9e9c94;
+    --blue: #c0392b; --blue-bg: #fdecea; --blue-text: #922b21;
+    --green: #2a7c3f; --green-bg: #e8f5ec; --green-text: #1e5c2e;
+    --red: #b3261e; --red-bg: #fdecea; --red-text: #8c1d18;
+    --amber: #7c5a0a; --amber-bg: #fef5e0; --amber-text: #5c4208;
+    --pink-bg: #fdeef4; --pink-text: #8b2252;
+    --radius: 10px; --radius-sm: 6px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
-  .container { max-width: 620px; margin: 0 auto; padding: 20px 16px 60px; }
+  body { font-family: -apple-system,'Segoe UI',sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+  .container { max-width: 640px; margin: 0 auto; padding: 20px 16px 60px; }
   .topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
   .logo { display: flex; align-items: center; gap: 10px; }
   .logo-icon { width: 40px; height: 40px; background: var(--blue); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 20px; }
@@ -43,11 +28,10 @@
   .avatar { width: 28px; height: 28px; border-radius: 50%; background: var(--blue-bg); color: var(--blue-text); font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center; }
   .avatar.admin { background: var(--amber-bg); color: var(--amber-text); }
   .user-chip-name { font-size: 13px; font-weight: 500; }
-  .tabs { display: flex; gap: 2px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 4px; margin-bottom: 20px; }
-  .tab { flex: 1; padding: 8px 4px; font-size: 13px; font-weight: 500; border: none; background: none; color: var(--text-muted); border-radius: var(--radius-sm); cursor: pointer; transition: all 0.15s; }
+  .tabs { display: flex; gap: 2px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 4px; margin-bottom: 20px; overflow-x: auto; }
+  .tab { flex: 1; padding: 8px 4px; font-size: 12px; font-weight: 500; border: none; background: none; color: var(--text-muted); border-radius: var(--radius-sm); cursor: pointer; transition: all 0.15s; white-space: nowrap; min-width: 60px; }
   .tab.active { background: var(--blue); color: #fff; }
-  .section { display: none; }
-  .section.active { display: block; }
+  .section { display: none; } .section.active { display: block; }
   .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; margin-bottom: 12px; box-shadow: var(--shadow); }
   .card-title { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 14px; }
   label { font-size: 13px; color: var(--text-muted); display: block; margin-bottom: 5px; }
@@ -55,15 +39,15 @@
   input:focus, select:focus { border-color: var(--blue); background: #fff; }
   input[type="number"] { -moz-appearance: textfield; }
   input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; }
+  input[type="checkbox"] { width: auto; margin-right: 6px; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
-  .form-row.three { grid-template-columns: 1fr 1fr 1fr; }
   .form-group { margin-bottom: 10px; }
   .btn { padding: 10px 18px; border: none; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.15s; }
   .btn-primary { background: var(--blue); color: #fff; width: 100%; margin-top: 4px; }
   .btn-primary:hover { background: #a93226; }
   .btn-secondary { background: var(--surface); color: var(--text-muted); border: 1px solid var(--border); }
-  .btn-secondary:hover { background: var(--bg); }
   .btn-danger { background: var(--red-bg); color: var(--red-text); border: 1px solid #f5c6c4; font-size: 12px; padding: 5px 10px; }
+  .btn-warning { background: var(--amber-bg); color: var(--amber-text); border: 1px solid #f0d080; font-size: 12px; padding: 5px 10px; }
   .btn-small { font-size: 12px; padding: 6px 12px; }
   .msg { padding: 10px 14px; border-radius: var(--radius-sm); font-size: 13px; margin: 8px 0; }
   .msg-ok { background: var(--green-bg); color: var(--green-text); border: 1px solid #b8dfc1; }
@@ -72,6 +56,7 @@
   .badge-sk { background: var(--pink-bg); color: var(--pink-text); }
   .badge-locked { background: var(--red-bg); color: var(--red-text); }
   .badge-open { background: var(--green-bg); color: var(--green-text); }
+  .badge-ot { background: var(--amber-bg); color: var(--amber-text); }
   .badge-exact { background: var(--green-bg); color: var(--green-text); }
   .badge-win { background: var(--blue-bg); color: var(--blue-text); }
   .badge-zero { background: var(--bg); color: var(--text-hint); border: 1px solid var(--border); }
@@ -88,10 +73,13 @@
   .wbtn:hover:not(:disabled) { border-color: var(--blue); color: var(--blue); }
   .wbtn.sel { background: var(--blue-bg); color: var(--blue-text); border-color: #f1948a; font-weight: 600; }
   .wbtn:disabled { opacity: 0.5; cursor: default; }
+  .ot-row { display: flex; align-items: center; margin-top: 10px; font-size: 13px; color: var(--text-muted); background: var(--amber-bg); padding: 8px 12px; border-radius: var(--radius-sm); }
   .save-btn { margin-top: 12px; width: 100%; }
-  .ts-row { font-size: 11px; color: var(--text-hint); margin-top: 6px; display: flex; align-items: center; gap: 4px; }
+  .ts-row { font-size: 11px; color: var(--text-hint); margin-top: 6px; }
   .tip-frozen { padding: 10px; background: var(--bg); border-radius: var(--radius-sm); margin-top: 8px; }
-  .tip-frozen .score-big { font-size: 18px; font-weight: 600; }
+  .result-display { display: flex; align-items: center; gap: 10px; }
+  .result-score { font-size: 18px; font-weight: 700; }
+  .result-winner { font-size: 13px; color: var(--text-muted); }
   .lb-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
   .lb-row:last-child { border-bottom: none; }
   .lb-rank { font-size: 18px; min-width: 30px; }
@@ -99,19 +87,17 @@
   .lb-name { font-size: 15px; font-weight: 600; }
   .lb-sub { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
   .lb-pts { font-size: 20px; font-weight: 700; color: var(--blue); }
-  .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 14px; }
+  .stats-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 14px; }
   .stat-box { background: var(--bg); border-radius: var(--radius-sm); padding: 10px; text-align: center; }
   .stat-val { font-size: 22px; font-weight: 700; }
   .stat-lbl { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
   .other-tips { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
   .other-tip-row { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; font-size: 13px; }
   .other-tip-name { color: var(--text-muted); min-width: 80px; }
-  .other-tip-score { font-weight: 500; }
   .other-tip-ts { font-size: 11px; color: var(--text-hint); }
   .empty { text-align: center; padding: 32px 16px; color: var(--text-muted); font-size: 14px; }
   .empty-icon { font-size: 32px; margin-bottom: 8px; }
   .divider { height: 1px; background: var(--border); margin: 14px 0; }
-  .inline-flex { display: flex; align-items: center; gap: 8px; }
   .loading { text-align: center; padding: 40px; color: var(--text-muted); }
   .spinner { width: 24px; height: 24px; border: 2px solid var(--border); border-top-color: var(--blue); border-radius: 50%; animation: spin 0.7s linear infinite; margin: 0 auto 12px; }
   @keyframes spin { to { transform: rotate(360deg); } }
@@ -120,13 +106,22 @@
   .login-hero-icon { font-size: 48px; margin-bottom: 10px; }
   .login-hero-title { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
   .login-hero-sub { font-size: 14px; color: var(--text-muted); }
-  .pin-row { display: flex; gap: 8px; }
-  .pin-row input { flex: 1; }
   .section-sep { display: flex; align-items: center; gap: 10px; margin: 16px 0; color: var(--text-hint); font-size: 12px; }
-  .section-sep::before, .section-sep::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-  .result-display { display: flex; align-items: center; gap: 10px; margin-top: 8px; }
-  .result-score { font-size: 22px; font-weight: 700; }
-  .result-winner { font-size: 13px; color: var(--text-muted); }
+  .section-sep::before, .section-sep::after { content:''; flex:1; height:1px; background: var(--border); }
+  /* Standings table */
+  .standings-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .standings-table th { text-align: center; padding: 6px 4px; color: var(--text-muted); font-weight: 500; font-size: 11px; border-bottom: 2px solid var(--border); }
+  .standings-table th:first-child { text-align: left; }
+  .standings-table td { text-align: center; padding: 7px 4px; border-bottom: 1px solid var(--border); }
+  .standings-table td:first-child { text-align: left; font-weight: 500; }
+  .standings-table tr:last-child td { border-bottom: none; }
+  .standings-table tr.highlight td { background: var(--blue-bg); }
+  .standings-table tr.playoff-line td { border-bottom: 2px solid var(--blue); }
+  .rank-num { display: inline-block; width: 20px; text-align: right; color: var(--text-hint); margin-right: 6px; font-weight: 400; }
+  .group-tabs { display: flex; gap: 6px; margin-bottom: 12px; }
+  .group-tab { padding: 6px 16px; border: 1px solid var(--border); border-radius: 999px; font-size: 13px; cursor: pointer; background: var(--bg); color: var(--text-muted); font-weight: 500; }
+  .group-tab.active { background: var(--blue); color: #fff; border-color: var(--blue); }
+  .edit-form { background: var(--bg); border-radius: var(--radius-sm); padding: 12px; margin-top: 10px; border: 1px solid var(--border); }
 </style>
 </head>
 <body>
@@ -136,7 +131,7 @@
 
 <script type="module">
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
-import { getFirestore, doc, getDoc, setDoc, collection, getDocs, deleteDoc, onSnapshot } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+import { getFirestore, doc, getDoc, setDoc, collection, getDocs, deleteDoc } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDCv4II_1G-z5R6hjCDkbNqjxQgaXZNQJg",
@@ -147,132 +142,78 @@ const firebaseConfig = {
   appId: "1:2292586064:web:569e2c367907136ff5e355",
   measurementId: "G-348KYLFGK6"
 };
-
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-
 const ADMIN_PIN = '111111';
-let currentUser = null;
-let isAdmin = false;
-let matchesCache = [];
-let unsubMatches = null;
+
+let currentUser = null, isAdmin = false;
+let matchesCache = [], tipsCache = {};
+let showPlayed = false, standingsGroup = 'A';
 
 const root = () => document.getElementById('root');
+function initials(n) { return n.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2); }
+function fmtTime(ts) { if(!ts) return ''; const d=new Date(ts); return d.toLocaleDateString('sk-SK')+' '+d.toLocaleTimeString('sk-SK',{hour:'2-digit',minute:'2-digit'}); }
+function isSK(m) { return ['slovensko','slovakia','svk'].some(k=>m.home.toLowerCase().includes(k)||m.away.toLowerCase().includes(k)); }
+function isLocked(m) { if(!m.kickoff) return false; return Date.now()>=m.kickoff; }
 
-function initials(name) {
-  return name.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
-}
-function fmtTime(ts) {
-  if (!ts) return '';
-  const d = new Date(ts);
-  return d.toLocaleDateString('sk-SK') + ' ' + d.toLocaleTimeString('sk-SK', { hour: '2-digit', minute: '2-digit' });
-}
-function isSK(m) {
-  return ['slovensko', 'slovakia', 'svk'].some(k => m.home.toLowerCase().includes(k) || m.away.toLowerCase().includes(k));
-}
-function isLocked(m) {
-  if (!m.kickoff) return false;
-  return Date.now() >= m.kickoff;
-}
+// Tipovanie bodovanie (pôvodné pravidlá)
 function calcPts(tip, result, sk) {
-  if (!tip || !result || !result.winner) return null;
-  const exact = tip.home == result.home && tip.away == result.away && tip.winner === result.winner;
-  if (exact) return sk ? 5 : 3;
-  if (tip.winner === result.winner) return 1;
+  if(!tip||!result||!result.winner) return null;
+  const exact = tip.home==result.home && tip.away==result.away && tip.winner===result.winner;
+  if(exact) return sk?5:3;
+  if(tip.winner===result.winner) return 1;
   return 0;
 }
 function ptsBadge(pts) {
-  if (pts === null || pts === undefined) return '';
-  if (pts >= 3) return `<span class="badge badge-exact">+${pts} b</span>`;
-  if (pts === 1) return `<span class="badge badge-win">+1 b</span>`;
+  if(pts===null||pts===undefined) return '';
+  if(pts>=3) return `<span class="badge badge-exact">+${pts} b</span>`;
+  if(pts===1) return `<span class="badge badge-win">+1 b</span>`;
   return `<span class="badge badge-zero">0 b</span>`;
 }
-function rankEmoji(i, n) {
-  if (i === 0) return '🥇';
-  if (i === n - 1 && n > 1) return '💸';
-  if (i === 1) return '🥈';
-  if (i === 2) return '🥉';
-  return `${i + 1}.`;
+function rankEmoji(i,n) {
+  if(i===0) return '🥇'; if(i===n-1&&n>1) return '💸';
+  if(i===1) return '🥈'; if(i===2) return '🥉'; return `${i+1}.`;
 }
-function msg(id, text, type) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.innerHTML = `<div class="msg msg-${type}">${text}</div>`;
-  if (type === 'ok') setTimeout(() => { el.innerHTML = ''; }, 3000);
+function msg(id,text,type) {
+  const el=document.getElementById(id); if(!el) return;
+  el.innerHTML=`<div class="msg msg-${type}">${text}</div>`;
+  if(type==='ok') setTimeout(()=>{el.innerHTML=''},3000);
 }
 
-// ─── AUTH ───────────────────────────────────────────────────────────────────
-
-async function getUser(name) {
-  const ref = doc(db, 'users', name.toLowerCase());
-  const snap = await getDoc(ref);
-  return snap.exists() ? snap.data() : null;
-}
-async function createUser(name, pin) {
-  const ref = doc(db, 'users', name.toLowerCase());
-  await setDoc(ref, { name, pin, createdAt: Date.now() });
-}
-
-// ─── MATCHES ────────────────────────────────────────────────────────────────
-
+// ─── DATA ────────────────────────────────────────────────────────────────────
 async function getMatches() {
-  const snap = await getDocs(collection(db, 'matches'));
-  const list = [];
-  snap.forEach(d => list.push({ id: d.id, ...d.data() }));
-  list.sort((a, b) => (a.kickoff || 0) - (b.kickoff || 0));
-  matchesCache = list;
-  return list;
+  const snap=await getDocs(collection(db,'matches'));
+  const list=[]; snap.forEach(d=>list.push({id:d.id,...d.data()}));
+  list.sort((a,b)=>(a.kickoff||0)-(b.kickoff||0));
+  matchesCache=list; return list;
 }
-async function addMatchDB(data) {
-  const id = 'match_' + Date.now();
-  await setDoc(doc(db, 'matches', id), { ...data, id });
-}
-async function deleteMatchDB(id) {
-  await deleteDoc(doc(db, 'matches', id));
-}
-async function saveResultDB(matchId, result) {
-  await setDoc(doc(db, 'matches', matchId), { result }, { merge: true });
-}
-
-// ─── TIPS ───────────────────────────────────────────────────────────────────
-
-let tipsCache = {}; // matchId -> { userName -> tipData }
-
 async function loadAllTips() {
-  const snap = await getDocs(collection(db, 'tips'));
-  tipsCache = {};
-  snap.forEach(d => {
-    const t = d.data();
-    if (!tipsCache[t.matchId]) tipsCache[t.matchId] = {};
-    tipsCache[t.matchId][t.user?.toLowerCase()] = t;
-  });
+  const snap=await getDocs(collection(db,'tips'));
+  tipsCache={};
+  snap.forEach(d=>{ const t=d.data(); if(!tipsCache[t.matchId]) tipsCache[t.matchId]={}; tipsCache[t.matchId][t.user?.toLowerCase()]=t; });
 }
-function getMyTipCached(matchId) {
-  return tipsCache[matchId]?.[currentUser.toLowerCase()] || null;
-}
-function getAllTipsForMatchCached(matchId) {
-  return Object.values(tipsCache[matchId] || {});
-}
-async function saveTipDB(matchId, tip) {
-  const id = `${currentUser.toLowerCase()}_${matchId}`;
-  const data = { ...tip, user: currentUser, matchId, updatedAt: Date.now() };
-  await setDoc(doc(db, 'tips', id), data);
-  if (!tipsCache[matchId]) tipsCache[matchId] = {};
-  tipsCache[matchId][currentUser.toLowerCase()] = data;
+function getMyTipCached(matchId) { return tipsCache[matchId]?.[currentUser.toLowerCase()]||null; }
+function getAllTipsForMatchCached(matchId) { return Object.values(tipsCache[matchId]||{}); }
+async function saveTipDB(matchId,tip) {
+  const id=`${currentUser.toLowerCase()}_${matchId}`;
+  const data={...tip,user:currentUser,matchId,updatedAt:Date.now()};
+  await setDoc(doc(db,'tips',id),data);
+  if(!tipsCache[matchId]) tipsCache[matchId]={};
+  tipsCache[matchId][currentUser.toLowerCase()]=data;
 }
 async function getAllTipsForUser(userName) {
-  const tips = {};
-  for (const matchId of Object.keys(tipsCache)) {
-    const t = tipsCache[matchId][userName.toLowerCase()];
-    if (t) tips[matchId] = t;
-  }
+  const tips={};
+  for(const matchId of Object.keys(tipsCache)) { const t=tipsCache[matchId][userName.toLowerCase()]; if(t) tips[matchId]=t; }
   return tips;
 }
 
-// ─── RENDER ─────────────────────────────────────────────────────────────────
+// ─── AUTH ────────────────────────────────────────────────────────────────────
+async function getUser(name) { const snap=await getDoc(doc(db,'users',name.toLowerCase())); return snap.exists()?snap.data():null; }
+async function createUser(name,pin) { await setDoc(doc(db,'users',name.toLowerCase()),{name,pin,createdAt:Date.now()}); }
 
+// ─── LOGIN ───────────────────────────────────────────────────────────────────
 function renderLogin() {
-  root().innerHTML = `
+  root().innerHTML=`
   <div class="login-wrap">
     <div class="login-hero">
       <div class="login-hero-icon">🏒</div>
@@ -283,7 +224,7 @@ function renderLogin() {
       <div class="card-title">Prihlásenie</div>
       <div id="login-msg"></div>
       <div class="form-group"><label>Meno</label><input type="text" id="li-name" placeholder="napr. Jano" /></div>
-      <div class="form-group"><label>PIN (4–6 číslic)</label><input type="password" id="li-pin" placeholder="••••" maxlength="6" /></div>
+      <div class="form-group"><label>PIN</label><input type="password" id="li-pin" placeholder="••••" maxlength="6" /></div>
       <button class="btn btn-primary" onclick="doLogin()">Prihlásiť sa</button>
       <div class="section-sep">alebo</div>
       <div class="card-title">Registrácia</div>
@@ -295,145 +236,127 @@ function renderLogin() {
     <div class="card" style="margin-top:8px">
       <div class="card-title">Administrátor</div>
       <div id="admin-login-msg"></div>
-      <div class="pin-row">
-        <input type="password" id="li-admin-pin" placeholder="Admin PIN" maxlength="6" />
+      <div style="display:flex;gap:8px">
+        <input type="password" id="li-admin-pin" placeholder="Admin PIN" maxlength="6" style="flex:1" />
         <button class="btn btn-secondary btn-small" onclick="doAdminLogin()">Vstup</button>
       </div>
     </div>
   </div>`;
 }
+window.doLogin=async function(){
+  const name=document.getElementById('li-name').value.trim(), pin=document.getElementById('li-pin').value.trim();
+  if(!name||!pin){msg('login-msg','Zadaj meno a PIN.','err');return;}
+  const u=await getUser(name);
+  if(!u||u.pin!==pin){msg('login-msg','Nesprávne meno alebo PIN.','err');return;}
+  currentUser=u.name;isAdmin=false;renderApp();
+};
+window.doRegister=async function(){
+  const name=document.getElementById('reg-name').value.trim(), pin=document.getElementById('reg-pin').value.trim();
+  if(!name||pin.length<4){msg('reg-msg','Zadaj meno a PIN (min. 4 číslice).','err');return;}
+  if(await getUser(name)){msg('reg-msg','Toto meno je obsadené.','err');return;}
+  await createUser(name,pin); currentUser=name;isAdmin=false;renderApp();
+};
+window.doAdminLogin=function(){
+  const pin=document.getElementById('li-admin-pin').value.trim();
+  if(pin!==ADMIN_PIN){msg('admin-login-msg','Nesprávny admin PIN.','err');return;}
+  currentUser='Admin';isAdmin=true;renderApp();
+};
 
-async function doLogin() {
-  const name = document.getElementById('li-name').value.trim();
-  const pin = document.getElementById('li-pin').value.trim();
-  if (!name || !pin) { msg('login-msg', 'Zadaj meno a PIN.', 'err'); return; }
-  const u = await getUser(name);
-  if (!u || u.pin !== pin) { msg('login-msg', 'Nesprávne meno alebo PIN.', 'err'); return; }
-  currentUser = u.name; isAdmin = false;
-  renderApp();
-}
-async function doRegister() {
-  const name = document.getElementById('reg-name').value.trim();
-  const pin = document.getElementById('reg-pin').value.trim();
-  if (!name || pin.length < 4) { msg('reg-msg', 'Zadaj meno a PIN (min. 4 číslice).', 'err'); return; }
-  const existing = await getUser(name);
-  if (existing) { msg('reg-msg', 'Toto meno je obsadené. Skús iné.', 'err'); return; }
-  await createUser(name, pin);
-  currentUser = name; isAdmin = false;
-  renderApp();
-}
-function doAdminLogin() {
-  const pin = document.getElementById('li-admin-pin').value.trim();
-  if (pin !== ADMIN_PIN) { msg('admin-login-msg', 'Nesprávny admin PIN.', 'err'); return; }
-  currentUser = 'Admin'; isAdmin = true;
-  renderApp();
-}
-
+// ─── APP SHELL ───────────────────────────────────────────────────────────────
 function renderApp() {
-  const tabs = isAdmin
-    ? `<button class="tab active" onclick="switchTab('tips',this)">🏒 Tipy</button>
-       <button class="tab" onclick="switchTab('prehled',this)">👀 Prehľad</button>
-       <button class="tab" onclick="switchTab('admin',this)">⚙️ Admin</button>
-       <button class="tab" onclick="switchTab('leaderboard',this)">🏆 Rebríček</button>`
-    : `<button class="tab active" onclick="switchTab('tips',this)">🏒 Moje tipy</button>
-       <button class="tab" onclick="switchTab('prehled',this)">👀 Prehľad</button>
-       <button class="tab" onclick="switchTab('leaderboard',this)">🏆 Rebríček</button>`;
-
-  root().innerHTML = `
+  const tabs=isAdmin
+    ?`<button class="tab active" onclick="switchTab('tips',this)">🏒 Tipy</button>
+      <button class="tab" onclick="switchTab('prehled',this)">👀 Prehľad</button>
+      <button class="tab" onclick="switchTab('standings',this)">📊 Tabuľka</button>
+      <button class="tab" onclick="switchTab('leaderboard',this)">🏆 Rebríček</button>
+      <button class="tab" onclick="switchTab('admin',this)">⚙️ Admin</button>`
+    :`<button class="tab active" onclick="switchTab('tips',this)">🏒 Moje tipy</button>
+      <button class="tab" onclick="switchTab('prehled',this)">👀 Prehľad</button>
+      <button class="tab" onclick="switchTab('standings',this)">📊 Tabuľka</button>
+      <button class="tab" onclick="switchTab('leaderboard',this)">🏆 Rebríček</button>`;
+  root().innerHTML=`
   <div class="topbar">
     <div class="logo">
       <div class="logo-icon">🏒</div>
       <div><div class="logo-text">MS Hokej 2026</div><div class="logo-sub">Švajčiarsko</div></div>
     </div>
     <div class="user-chip" onclick="logout()">
-      <div class="avatar ${isAdmin ? 'admin' : ''}">${isAdmin ? 'AD' : initials(currentUser)}</div>
+      <div class="avatar ${isAdmin?'admin':''}">${isAdmin?'AD':initials(currentUser)}</div>
       <span class="user-chip-name">${currentUser}</span>
       <span style="font-size:11px;color:var(--text-hint);margin-left:2px">↩</span>
     </div>
   </div>
   <div class="tabs">${tabs}</div>
-  <div id="tab-tips" class="section active"><div class="loading"><div class="spinner"></div>Načítavam...</div></div>
+  <div id="tab-tips" class="section active"></div>
   <div id="tab-prehled" class="section"></div>
-  ${isAdmin ? '<div id="tab-admin" class="section"></div>' : ''}
-  <div id="tab-leaderboard" class="section"></div>`;
-
+  <div id="tab-standings" class="section"></div>
+  <div id="tab-leaderboard" class="section"></div>
+  ${isAdmin?'<div id="tab-admin" class="section"></div>':''}`;
   loadSection('tips');
 }
-
-function switchTab(name, btn) {
-  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+window.switchTab=function(name,btn){
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   btn.classList.add('active');
-  document.getElementById('tab-' + name).classList.add('active');
+  document.getElementById('tab-'+name).classList.add('active');
   loadSection(name);
+};
+function loadSection(name){
+  if(name==='tips') renderTips();
+  if(name==='prehled') renderPrehled();
+  if(name==='standings') renderStandings();
+  if(name==='leaderboard') renderLeaderboard();
+  if(name==='admin') renderAdmin();
 }
-function loadSection(name) {
-  if (name === 'tips') renderTips();
-  if (name === 'prehled') renderPrehled();
-  if (name === 'admin') renderAdmin();
-  if (name === 'leaderboard') renderLeaderboard();
-}
-function logout() { currentUser = null; isAdmin = false; renderLogin(); }
+window.logout=function(){currentUser=null;isAdmin=false;renderLogin();};
 
 // ─── TIPS SECTION ────────────────────────────────────────────────────────────
+window.togglePlayed=function(){showPlayed=!showPlayed;renderTips();};
 
-let showPlayed = false;
+async function renderTips(){
+  const el=document.getElementById('tab-tips'); if(!el) return;
+  el.innerHTML='<div class="loading"><div class="spinner"></div>Načítavam...</div>';
+  const [matches]=await Promise.all([getMatches(),loadAllTips()]);
+  if(!matches.length){el.innerHTML='<div class="card"><div class="empty"><div class="empty-icon">📅</div>Admin ešte nepridali zápasy.</div></div>';return;}
 
-async function renderTips() {
-  const el = document.getElementById('tab-tips');
-  if (!el) return;
-  el.innerHTML = '<div class="loading"><div class="spinner"></div>Načítavam...</div>';
+  const upcoming=matches.filter(m=>!isLocked(m));
+  const played=matches.filter(m=>isLocked(m));
+  let html='';
 
-  // Načítaj všetko naraz — 2 requesty namiesto 100+
-  const [matches] = await Promise.all([getMatches(), loadAllTips()]);
-
-  if (!matches.length) {
-    el.innerHTML = '<div class="card"><div class="empty"><div class="empty-icon">📅</div>Admin ešte nepridali zápasy. Skús neskôr.</div></div>';
-    return;
-  }
-
-  const upcoming = matches.filter(m => !isLocked(m));
-  const played = matches.filter(m => isLocked(m));
-
-  let html = '';
-
-  // Prepínač odohrané
-  if (played.length) {
-    html += `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+  if(played.length){
+    html+=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
       <span style="font-size:13px;color:var(--text-muted)">${upcoming.length} nadchádzajúcich · ${played.length} odohraných</span>
-      <button class="btn btn-secondary btn-small" onclick="togglePlayed()">${showPlayed ? '🙈 Schovať odohrané' : '📋 Zobraziť odohrané'}</button>
+      <button class="btn btn-secondary btn-small" onclick="togglePlayed()">${showPlayed?'🙈 Schovať odohrané':'📋 Zobraziť odohrané'}</button>
     </div>`;
   }
 
-  const toShow = showPlayed ? matches : upcoming.length ? upcoming : matches;
-
-  if (!toShow.length) {
-    html += '<div class="card"><div class="empty">Žiadne nadchádzajúce zápasy.<br><br><button class="btn btn-secondary btn-small" onclick="togglePlayed()">Zobraziť odohrané</button></div></div>';
-    el.innerHTML = html;
-    return;
+  const toShow=showPlayed?matches:(upcoming.length?upcoming:matches);
+  if(!toShow.length){
+    html+='<div class="card"><div class="empty">Žiadne nadchádzajúce zápasy.<br><br><button class="btn btn-secondary btn-small" onclick="togglePlayed()">Zobraziť odohrané</button></div></div>';
+    el.innerHTML=html; return;
   }
 
-  for (const m of toShow) {
-    const sk = isSK(m);
-    const locked = isLocked(m);
-    const myTip = getMyTipCached(m.id);
-    const otherTips = isAdmin ? getAllTipsForMatchCached(m.id) : [];
+  // Load users for admin tip entry
+  let usersForTip=[];
+  if(isAdmin){ const s=await getDocs(collection(db,'users')); s.forEach(d=>usersForTip.push(d.data().name)); }
 
-    html += `<div class="card"><div class="match-header">
-      <div>
-        <div class="match-teams">${m.home} – ${m.away}
-          ${sk ? '<span class="badge badge-sk">🇸🇰 SK</span>' : ''}
-          ${locked ? '<span class="badge badge-locked">🔒 uzamknuté</span>' : '<span class="badge badge-open">✓ otvorené</span>'}
-        </div>
-        <div class="match-meta">${m.kickoff ? '⏰ ' + fmtTime(m.kickoff) : ''}${m.group ? ' · Skupina ' + m.group : ''}</div>
+  for(const m of toShow){
+    const sk=isSK(m), locked=isLocked(m), myTip=getMyTipCached(m.id);
+    const otherTips=isAdmin?getAllTipsForMatchCached(m.id):[];
+    const otExt=m.result?.overtime?'<span class="badge badge-ot">'+( m.result.shootout?'N':'P')+'</span>':'';
+
+    html+=`<div class="card"><div class="match-header"><div>
+      <div class="match-teams">${m.home} – ${m.away}
+        ${sk?'<span class="badge badge-sk">🇸🇰 SK</span>':''}
+        ${locked?'<span class="badge badge-locked">🔒</span>':'<span class="badge badge-open">✓ otvorené</span>'}
+        ${m.result?.winner?otExt:''}
       </div>
-    </div>`;
+      <div class="match-meta">${m.kickoff?'⏰ '+fmtTime(m.kickoff):''}${m.group?' · Skupina '+m.group:''}</div>
+    </div></div>`;
 
-    if (!locked) {
-      const th = myTip?.home ?? '';
-      const ta = myTip?.away ?? '';
-      const tw = myTip?.winner || '';
-      html += `<div class="card-title" style="margin-bottom:10px">Môj tip</div>
+    if(!locked){
+      const th=myTip?.home??'', ta=myTip?.away??'', tw=myTip?.winner||'';
+      html+=`<div class="card-title" style="margin-bottom:10px">Môj tip</div>
       <div class="score-row">
         <input class="score-input" type="number" min="0" max="20" value="${th}" placeholder="0" id="th-${m.id}" />
         <span class="score-sep">:</span>
@@ -441,76 +364,82 @@ async function renderTips() {
         <span style="font-size:13px;color:var(--text-muted);margin-left:4px">víťaz →</span>
       </div>
       <div class="winner-row">
-        <button class="wbtn ${tw === m.home ? 'sel' : ''}" id="wb-h-${m.id}" onclick="selW('${m.id}','${m.home.replace(/'/g,"\\'")}','${m.away.replace(/'/g,"\\'")}',this)">${m.home}</button>
-        <button class="wbtn ${tw === m.away ? 'sel' : ''}" id="wb-a-${m.id}" onclick="selW('${m.id}','${m.away.replace(/'/g,"\\'")}','${m.home.replace(/'/g,"\\'")}',this)">${m.away}</button>
+        <button class="wbtn ${tw===m.home?'sel':''}" id="wb-h-${m.id}" onclick="selW('${m.id}',this)">${m.home}</button>
+        <button class="wbtn ${tw===m.away?'sel':''}" id="wb-a-${m.id}" onclick="selW('${m.id}',this)">${m.away}</button>
       </div>
-      ${myTip ? `<div class="ts-row">🕐 Naposledy uložené: ${fmtTime(myTip.updatedAt)}</div>` : ''}
-      <button class="btn btn-primary save-btn" onclick="doSaveTip('${m.id}','${m.home.replace(/'/g,"\\'")}','${m.away.replace(/'/g,"\\'")}')">Uložiť tip</button>
+      ${myTip?`<div class="ts-row">🕐 Uložené: ${fmtTime(myTip.updatedAt)}</div>`:''}
+      <button class="btn btn-primary save-btn" onclick="doSaveTip('${m.id}')">Uložiť tip</button>
       <div id="tip-msg-${m.id}"></div>`;
-    } else if (myTip) {
-      const pts = calcPts(myTip, m.result, sk);
-      html += `<div class="tip-frozen">
+    } else if(myTip){
+      const pts=calcPts(myTip,m.result,sk);
+      html+=`<div class="tip-frozen">
         <div style="font-size:12px;color:var(--text-muted);margin-bottom:4px">Môj zamknutý tip</div>
         <div class="result-display">
           <div class="result-score">${myTip.home} : ${myTip.away}</div>
-          <div class="result-winner">víťaz: <strong>${myTip.winner || '?'}</strong></div>
-          ${m.result?.winner ? ptsBadge(pts) : ''}
+          <div class="result-winner">víťaz: <strong>${myTip.winner||'?'}</strong></div>
+          ${m.result?.winner?ptsBadge(pts):''}
         </div>
         <div class="ts-row">🕐 ${fmtTime(myTip.updatedAt)}</div>
       </div>`;
-      if (m.result?.winner) {
-        html += `<div class="tip-frozen" style="margin-top:6px;background:#f0f8ff">
+      if(m.result?.winner){
+        html+=`<div class="tip-frozen" style="margin-top:6px;background:#f0f8ff">
           <div style="font-size:12px;color:var(--text-muted);margin-bottom:4px">Skutočný výsledok</div>
           <div class="result-display">
             <div class="result-score">${m.result.home} : ${m.result.away}</div>
-            <div class="result-winner">víťaz: <strong>${m.result.winner}</strong></div>
+            <div class="result-winner">víťaz: <strong>${m.result.winner}</strong> ${otExt}</div>
           </div>
         </div>`;
       }
     } else {
-      html += `<div class="tip-frozen" style="color:var(--text-muted);font-style:italic">🔒 Zápas bol uzamknutý bez zadaného tipu.</div>`;
+      html+=`<div class="tip-frozen" style="color:var(--text-muted);font-style:italic">🔒 Zápas bol uzamknutý bez zadaného tipu.</div>`;
     }
 
-    if (isAdmin) {
-      html += `<div class="divider"></div>
+    if(isAdmin){
+      const rh=m.result?.home??'', ra=m.result?.away??'', rw=m.result?.winner||'';
+      const ot=m.result?.overtime||false, so=m.result?.shootout||false;
+      html+=`<div class="divider"></div>
       <div class="card-title">Zadať výsledok</div>
       <div class="score-row">
-        <input class="score-input" type="number" min="0" max="20" value="${m.result?.home ?? ''}" placeholder="0" id="rh-${m.id}" />
+        <input class="score-input" type="number" min="0" max="20" value="${rh}" placeholder="0" id="rh-${m.id}" />
         <span class="score-sep">:</span>
-        <input class="score-input" type="number" min="0" max="20" value="${m.result?.away ?? ''}" placeholder="0" id="ra-${m.id}" />
+        <input class="score-input" type="number" min="0" max="20" value="${ra}" placeholder="0" id="ra-${m.id}" />
       </div>
       <div class="winner-row">
-        <button class="wbtn ${m.result?.winner === m.home ? 'sel' : ''}" id="rb-h-${m.id}" onclick="selR('${m.id}','${m.home.replace(/'/g,"\\'")}','${m.away.replace(/'/g,"\\'")}',this)">${m.home}</button>
-        <button class="wbtn ${m.result?.winner === m.away ? 'sel' : ''}" id="rb-a-${m.id}" onclick="selR('${m.id}','${m.away.replace(/'/g,"\\'")}','${m.home.replace(/'/g,"\\'")}',this)">${m.away}</button>
+        <button class="wbtn ${rw===m.home?'sel':''}" id="rb-h-${m.id}" onclick="selR('${m.id}',this)">${m.home}</button>
+        <button class="wbtn ${rw===m.away?'sel':''}" id="rb-a-${m.id}" onclick="selR('${m.id}',this)">${m.away}</button>
       </div>
-      <button class="btn btn-primary save-btn" onclick="doSaveResult('${m.id}')">Uložiť výsledok</button>
+      <div class="ot-row">
+        <label style="display:flex;align-items:center;gap:6px;margin:0;color:var(--amber-text);cursor:pointer">
+          <input type="checkbox" id="ot-${m.id}" ${ot?'checked':''} onchange="toggleSO('${m.id}')" /> Predĺženie / nájazdy
+        </label>
+        <span id="so-wrap-${m.id}" style="margin-left:16px;${ot?'':'display:none'}">
+          <label style="display:flex;align-items:center;gap:6px;margin:0;color:var(--amber-text);cursor:pointer">
+            <input type="checkbox" id="so-${m.id}" ${so?'checked':''} /> Nájazdy
+          </label>
+        </span>
+      </div>
+      <button class="btn btn-primary save-btn" onclick="doSaveResult('${m.id}','${m.home.replace(/'/g,"\\'")}','${m.away.replace(/'/g,"\\'")}')">Uložiť výsledok</button>
       <div id="res-msg-${m.id}"></div>`;
 
-      if (otherTips.length) {
-        html += `<div class="other-tips"><div class="card-title">Tipy účastníkov</div>`;
-        for (const t of otherTips) {
-          const pts = m.result?.winner ? calcPts(t, m.result, sk) : null;
-          html += `<div class="other-tip-row">
+      if(otherTips.length){
+        html+=`<div class="other-tips"><div class="card-title">Tipy účastníkov</div>`;
+        for(const t of otherTips){
+          const pts=m.result?.winner?calcPts(t,m.result,sk):null;
+          html+=`<div class="other-tip-row">
             <span class="other-tip-name">${t.user}</span>
-            <span class="other-tip-score">${t.home}:${t.away} · ${t.winner || '?'}</span>
+            <span style="font-weight:500">${t.home}:${t.away} · ${t.winner||'?'}</span>
             <span class="other-tip-ts">${fmtTime(t.updatedAt)}</span>
             ${ptsBadge(pts)}
           </div>`;
         }
-        html += `</div>`;
+        html+=`</div>`;
       }
 
-      // Admin manual tip entry
-      const usersForTip = await (async () => { const s = await getDocs(collection(db, 'users')); const r = []; s.forEach(d => r.push(d.data().name)); return r; })();
-      if (usersForTip.length) {
-        html += `<div class="divider"></div>
-        <div class="card-title">📝 Zadať tip za hráča (admin)</div>
+      if(usersForTip.length){
+        html+=`<div class="divider"></div>
+        <div class="card-title">📝 Zadať tip za hráča</div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end;margin-bottom:8px">
-          <div><label>Hráč</label>
-            <select id="at-user-${m.id}" style="width:130px">
-              ${usersForTip.map(u => `<option value="${u}">${u}</option>`).join('')}
-            </select>
-          </div>
+          <div><label>Hráč</label><select id="at-user-${m.id}" style="width:130px">${usersForTip.map(u=>`<option value="${u}">${u}</option>`).join('')}</select></div>
           <div style="display:flex;align-items:center;gap:6px;margin-top:18px">
             <input class="score-input" type="number" min="0" max="20" placeholder="0" id="at-h-${m.id}" style="width:52px" />
             <span class="score-sep">:</span>
@@ -518,194 +447,303 @@ async function renderTips() {
           </div>
         </div>
         <div class="winner-row">
-          <button class="wbtn" id="at-wh-${m.id}" onclick="selAT('${m.id}','${m.home.replace(/'/g,"\\'")}',this)">${m.home}</button>
-          <button class="wbtn" id="at-wa-${m.id}" onclick="selAT('${m.id}','${m.away.replace(/'/g,"\\'")}',this)">${m.away}</button>
+          <button class="wbtn" id="at-wh-${m.id}" onclick="selAT('${m.id}',this)">${m.home}</button>
+          <button class="wbtn" id="at-wa-${m.id}" onclick="selAT('${m.id}',this)">${m.away}</button>
         </div>
         <button class="btn btn-secondary btn-small" style="margin-top:10px" onclick="doAdminTip('${m.id}')">Uložiť tip za hráča</button>
         <div id="at-msg-${m.id}"></div>`;
       }
     }
-
-    html += `</div>`;
+    html+=`</div>`;
   }
-  el.innerHTML = html;
+  el.innerHTML=html;
 }
 
-window.togglePlayed = function() {
-  showPlayed = !showPlayed;
-  renderTips();
+window.toggleSO=function(matchId){
+  const ot=document.getElementById('ot-'+matchId);
+  const soWrap=document.getElementById('so-wrap-'+matchId);
+  if(soWrap) soWrap.style.display=ot?.checked?'':'none';
 };
-
-
-window.selAT = function(matchId, winner, btn) {
-  const hb = document.getElementById('at-wh-' + matchId);
-  const ab = document.getElementById('at-wa-' + matchId);
-  if (!hb || !ab) return;
-  hb.classList.remove('sel'); ab.classList.remove('sel');
+window.selW=function(matchId,btn){
+  ['wb-h-','wb-a-'].forEach(p=>{ const b=document.getElementById(p+matchId); if(b) b.classList.remove('sel'); });
   btn.classList.add('sel');
 };
-window.doAdminTip = async function(matchId) {
-  const userName = document.getElementById('at-user-' + matchId)?.value;
-  const h = parseInt(document.getElementById('at-h-' + matchId)?.value) || 0;
-  const a = parseInt(document.getElementById('at-a-' + matchId)?.value) || 0;
-  const hb = document.getElementById('at-wh-' + matchId);
-  const ab = document.getElementById('at-wa-' + matchId);
-  const winner = hb?.classList.contains('sel') ? hb.textContent.trim() : (ab?.classList.contains('sel') ? ab.textContent.trim() : '');
-  if (!winner) { msg('at-msg-' + matchId, 'Vyber víťaza.', 'err'); return; }
-  if (!userName) { msg('at-msg-' + matchId, 'Vyber hráča.', 'err'); return; }
-  const id = `${userName.toLowerCase()}_${matchId}`;
-  await setDoc(doc(db, 'tips', id), { home: h, away: a, winner, user: userName, matchId, updatedAt: Date.now(), adminEntry: true });
-  msg('at-msg-' + matchId, `✓ Tip za ${userName} uložený.`, 'ok');
-  const scrollY = window.scrollY;
-  setTimeout(async () => { await renderTips(); window.scrollTo({ top: scrollY, behavior: 'instant' }); }, 1200);
-};
-window.selW = function(matchId, winner, other, btn) {
-  const hb = document.getElementById('wb-h-' + matchId);
-  const ab = document.getElementById('wb-a-' + matchId);
-  if (!hb || !ab) return;
-  hb.classList.remove('sel'); ab.classList.remove('sel');
+window.selR=function(matchId,btn){
+  ['rb-h-','rb-a-'].forEach(p=>{ const b=document.getElementById(p+matchId); if(b) b.classList.remove('sel'); });
   btn.classList.add('sel');
 };
-window.selR = function(matchId, winner, other, btn) {
-  const hb = document.getElementById('rb-h-' + matchId);
-  const ab = document.getElementById('rb-a-' + matchId);
-  if (!hb || !ab) return;
-  hb.classList.remove('sel'); ab.classList.remove('sel');
+window.selAT=function(matchId,btn){
+  ['at-wh-','at-wa-'].forEach(p=>{ const b=document.getElementById(p+matchId); if(b) b.classList.remove('sel'); });
   btn.classList.add('sel');
 };
-window.doSaveTip = async function(matchId, home, away) {
-  const h = parseInt(document.getElementById('th-' + matchId)?.value) || 0;
-  const a = parseInt(document.getElementById('ta-' + matchId)?.value) || 0;
-  const hb = document.getElementById('wb-h-' + matchId);
-  const ab = document.getElementById('wb-a-' + matchId);
-  const winner = hb?.classList.contains('sel') ? hb.textContent.trim() : (ab?.classList.contains('sel') ? ab.textContent.trim() : '');
-  if (!winner) { msg('tip-msg-' + matchId, 'Vyber víťaza zápasu.', 'err'); return; }
-  const match = matchesCache.find(m => m.id === matchId);
-  if (match && isLocked(match)) { msg('tip-msg-' + matchId, 'Zápas je uzamknutý.', 'err'); return; }
-  await saveTipDB(matchId, { home: h, away: a, winner });
-  msg('tip-msg-' + matchId, '✓ Tip uložený – ' + fmtTime(Date.now()), 'ok');
+window.doSaveTip=async function(matchId){
+  const h=parseInt(document.getElementById('th-'+matchId)?.value)||0;
+  const a=parseInt(document.getElementById('ta-'+matchId)?.value)||0;
+  const hb=document.getElementById('wb-h-'+matchId), ab=document.getElementById('wb-a-'+matchId);
+  const winner=hb?.classList.contains('sel')?hb.textContent.trim():(ab?.classList.contains('sel')?ab.textContent.trim():'');
+  if(!winner){msg('tip-msg-'+matchId,'Vyber víťaza.','err');return;}
+  const match=matchesCache.find(m=>m.id===matchId);
+  if(match&&isLocked(match)){msg('tip-msg-'+matchId,'Zápas je uzamknutý.','err');return;}
+  await saveTipDB(matchId,{home:h,away:a,winner});
+  msg('tip-msg-'+matchId,'✓ Tip uložený – '+fmtTime(Date.now()),'ok');
 };
-window.doSaveResult = async function(matchId) {
-  const h = parseInt(document.getElementById('rh-' + matchId)?.value);
-  const a = parseInt(document.getElementById('ra-' + matchId)?.value);
-  const hb = document.getElementById('rb-h-' + matchId);
-  const ab = document.getElementById('rb-a-' + matchId);
-  const winner = hb?.classList.contains('sel') ? hb.textContent.trim() : (ab?.classList.contains('sel') ? ab.textContent.trim() : '');
-  if (!winner || isNaN(h) || isNaN(a)) { msg('res-msg-' + matchId, 'Zadaj výsledok aj víťaza.', 'err'); return; }
-  await saveResultDB(matchId, { home: h, away: a, winner, savedAt: Date.now() });
-  msg('res-msg-' + matchId, '✓ Výsledok uložený.', 'ok');
-  const scrollY = window.scrollY;
-  setTimeout(async () => { await renderTips(); window.scrollTo({ top: scrollY, behavior: 'instant' }); }, 1200);
+window.doSaveResult=async function(matchId,home,away){
+  const h=parseInt(document.getElementById('rh-'+matchId)?.value);
+  const a=parseInt(document.getElementById('ra-'+matchId)?.value);
+  const hb=document.getElementById('rb-h-'+matchId), ab=document.getElementById('rb-a-'+matchId);
+  const winner=hb?.classList.contains('sel')?hb.textContent.trim():(ab?.classList.contains('sel')?ab.textContent.trim():'');
+  if(!winner||isNaN(h)||isNaN(a)){msg('res-msg-'+matchId,'Zadaj výsledok aj víťaza.','err');return;}
+  const overtime=document.getElementById('ot-'+matchId)?.checked||false;
+  const shootout=overtime&&(document.getElementById('so-'+matchId)?.checked||false);
+  await setDoc(doc(db,'matches',matchId),{result:{home:h,away:a,winner,overtime,shootout,savedAt:Date.now()}},{merge:true});
+  // Update cache
+  const idx=matchesCache.findIndex(m=>m.id===matchId);
+  if(idx>=0) matchesCache[idx].result={home:h,away:a,winner,overtime,shootout};
+  msg('res-msg-'+matchId,'✓ Výsledok uložený.','ok');
+  const scrollY=window.scrollY;
+  setTimeout(async()=>{await renderTips();window.scrollTo({top:scrollY,behavior:'instant'});},1200);
+};
+window.doAdminTip=async function(matchId){
+  const userName=document.getElementById('at-user-'+matchId)?.value;
+  const h=parseInt(document.getElementById('at-h-'+matchId)?.value)||0;
+  const a=parseInt(document.getElementById('at-a-'+matchId)?.value)||0;
+  const hb=document.getElementById('at-wh-'+matchId), ab=document.getElementById('at-wa-'+matchId);
+  const winner=hb?.classList.contains('sel')?hb.textContent.trim():(ab?.classList.contains('sel')?ab.textContent.trim():'');
+  if(!winner){msg('at-msg-'+matchId,'Vyber víťaza.','err');return;}
+  const id=`${userName.toLowerCase()}_${matchId}`;
+  await setDoc(doc(db,'tips',id),{home:h,away:a,winner,user:userName,matchId,updatedAt:Date.now(),adminEntry:true});
+  if(!tipsCache[matchId]) tipsCache[matchId]={};
+  tipsCache[matchId][userName.toLowerCase()]={home:h,away:a,winner,user:userName,matchId,updatedAt:Date.now()};
+  msg('at-msg-'+matchId,`✓ Tip za ${userName} uložený.`,'ok');
+  const scrollY=window.scrollY;
+  setTimeout(async()=>{await renderTips();window.scrollTo({top:scrollY,behavior:'instant'});},1200);
 };
 
-// ─── PREHĽAD TIPOV ───────────────────────────────────────────────────────────
+// ─── PREHĽAD ─────────────────────────────────────────────────────────────────
+async function renderPrehled(){
+  const el=document.getElementById('tab-prehled'); if(!el) return;
+  el.innerHTML='<div class="loading"><div class="spinner"></div>Načítavam...</div>';
+  const [matches]=await Promise.all([getMatches(),loadAllTips()]);
+  const usersSnap=await getDocs(collection(db,'users'));
+  const users=[]; usersSnap.forEach(d=>users.push(d.data().name));
+  const lockedMatches=matches.filter(m=>isLocked(m));
+  if(!lockedMatches.length){el.innerHTML='<div class="card"><div class="empty"><div class="empty-icon">⏳</div>Zatiaľ žiadne začaté ani odohrané zápasy.</div></div>';return;}
 
-async function renderPrehled() {
-  const el = document.getElementById('tab-prehled');
-  if (!el) return;
-  el.innerHTML = '<div class="loading"><div class="spinner"></div>Načítavam...</div>';
-
-  const [matches] = await Promise.all([getMatches(), loadAllTips()]);
-  const usersSnap = await getDocs(collection(db, 'users'));
-  const users = [];
-  usersSnap.forEach(d => users.push(d.data().name));
-
-  const lockedMatches = matches.filter(m => isLocked(m));
-
-  if (!lockedMatches.length) {
-    el.innerHTML = '<div class="card"><div class="empty"><div class="empty-icon">⏳</div>Zatiaľ žiadne začaté ani odohrané zápasy.</div></div>';
-    return;
-  }
-
-  let html = `<div style="font-size:13px;color:var(--text-muted);margin-bottom:12px">Tipy všetkých hráčov na začaté/odohrané zápasy (${lockedMatches.length})</div>`;
-
-  for (const m of lockedMatches) {
-    const sk = isSK(m);
-    const hasResult = !!m.result?.winner;
-
-    html += `<div class="card" style="overflow-x:auto">
-      <div class="match-header">
-        <div>
-          <div class="match-teams">${m.home} – ${m.away}
-            ${sk ? '<span class="badge badge-sk">🇸🇰 SK</span>' : ''}
-            ${hasResult ? '<span class="badge badge-locked">✓ výsledok</span>' : '<span class="badge" style="background:#FEF5E0;color:#7C5A0A">▶ prebieha</span>'}
-          </div>
-          <div class="match-meta">${m.kickoff ? '⏰ ' + fmtTime(m.kickoff) : ''}${m.group ? ' · Skupina ' + m.group : ''}</div>
-          ${hasResult ? `<div style="margin-top:4px;font-size:13px;font-weight:600">Výsledok: ${m.result.home} : ${m.result.away} <span style="font-weight:400;color:var(--text-muted)">(${m.result.winner})</span></div>` : ''}
-        </div>
-      </div>
+  let html=`<div style="font-size:13px;color:var(--text-muted);margin-bottom:12px">Tipy všetkých hráčov na začaté/odohrané zápasy (${lockedMatches.length})</div>`;
+  for(const m of lockedMatches){
+    const sk=isSK(m), hasResult=!!m.result?.winner;
+    const otBadge=m.result?.overtime?`<span class="badge badge-ot">${m.result.shootout?'N':'P'}</span>`:'';
+    html+=`<div class="card" style="overflow-x:auto">
+      <div class="match-header"><div>
+        <div class="match-teams">${m.home} – ${m.away} ${sk?'<span class="badge badge-sk">🇸🇰 SK</span>':''} ${hasResult?otBadge:'<span class="badge" style="background:#FEF5E0;color:#7C5A0A">▶ prebieha</span>'}</div>
+        <div class="match-meta">${m.kickoff?'⏰ '+fmtTime(m.kickoff):''}${m.group?' · Skupina '+m.group:''}</div>
+        ${hasResult?`<div style="margin-top:4px;font-size:13px;font-weight:600">Výsledok: ${m.result.home} : ${m.result.away} <span style="font-weight:400;color:var(--text-muted)">(${m.result.winner}) ${otBadge}</span></div>`:''}
+      </div></div>
       <table style="width:100%;border-collapse:collapse;margin-top:8px;font-size:13px">
-        <thead>
-          <tr style="border-bottom:2px solid var(--border)">
-            <th style="text-align:left;padding:4px 8px 6px 0;color:var(--text-muted);font-weight:500">Hráč</th>
-            <th style="text-align:center;padding:4px 6px 6px;color:var(--text-muted);font-weight:500">Tip</th>
-            <th style="text-align:center;padding:4px 6px 6px;color:var(--text-muted);font-weight:500">Víťaz</th>
-            <th style="text-align:center;padding:4px 0 6px 6px;color:var(--text-muted);font-weight:500">Body</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${users.map(userName => {
-            const tip = tipsCache[m.id]?.[userName.toLowerCase()];
-            const pts = hasResult ? calcPts(tip, m.result, sk) : null;
-            const isMe = userName.toLowerCase() === currentUser.toLowerCase();
-            const rowStyle = isMe ? 'background:var(--blue-bg);' : '';
-            if (!tip) return `<tr style="${rowStyle}border-bottom:1px solid var(--border)">
-              <td style="padding:6px 8px 6px 0;font-weight:${isMe?'600':'400'}">${userName}${isMe?' 👤':''}</td>
-              <td style="text-align:center;color:var(--text-hint);padding:6px">—</td>
-              <td style="text-align:center;color:var(--text-hint);padding:6px">—</td>
-              <td style="text-align:center;padding:6px">${hasResult ? '<span class="badge badge-zero">0 b</span>' : ''}</td>
-            </tr>`;
-            const winnerShort = tip.winner === m.home ? m.home : tip.winner === m.away ? m.away : '?';
-            const correct = hasResult && tip.winner === m.result.winner;
-            return `<tr style="${rowStyle}border-bottom:1px solid var(--border)">
-              <td style="padding:6px 8px 6px 0;font-weight:${isMe?'600':'400'}">${userName}${isMe?' 👤':''}</td>
-              <td style="text-align:center;font-weight:500;padding:6px">${tip.home} : ${tip.away}</td>
-              <td style="text-align:center;padding:6px;color:${correct?'var(--green)':'var(--text-muted)'};font-weight:${correct?'600':'400'}">${winnerShort}</td>
-              <td style="text-align:center;padding:6px">${pts !== null ? ptsBadge(pts) : ''}</td>
-            </tr>`;
-          }).join('')}
-        </tbody>
+        <thead><tr style="border-bottom:2px solid var(--border)">
+          <th style="text-align:left;padding:4px 8px 6px 0;color:var(--text-muted);font-weight:500">Hráč</th>
+          <th style="text-align:center;padding:4px 6px;color:var(--text-muted);font-weight:500">Tip</th>
+          <th style="text-align:center;padding:4px 6px;color:var(--text-muted);font-weight:500">Víťaz</th>
+          <th style="text-align:center;padding:4px 0 6px 6px;color:var(--text-muted);font-weight:500">Body</th>
+        </tr></thead>
+        <tbody>${users.map(userName=>{
+          const tip=tipsCache[m.id]?.[userName.toLowerCase()];
+          const pts=hasResult?calcPts(tip,m.result,sk):null;
+          const isMe=userName.toLowerCase()===currentUser.toLowerCase();
+          const rowStyle=isMe?'background:var(--blue-bg);':'';
+          if(!tip) return `<tr style="${rowStyle}border-bottom:1px solid var(--border)">
+            <td style="padding:6px 8px 6px 0;font-weight:${isMe?'600':'400'}">${userName}${isMe?' 👤':''}</td>
+            <td style="text-align:center;color:var(--text-hint);padding:6px">—</td>
+            <td style="text-align:center;color:var(--text-hint);padding:6px">—</td>
+            <td style="text-align:center;padding:6px">${hasResult?'<span class="badge badge-zero">0 b</span>':''}</td>
+          </tr>`;
+          const correct=hasResult&&tip.winner===m.result.winner;
+          return `<tr style="${rowStyle}border-bottom:1px solid var(--border)">
+            <td style="padding:6px 8px 6px 0;font-weight:${isMe?'600':'400'}">${userName}${isMe?' 👤':''}</td>
+            <td style="text-align:center;font-weight:500;padding:6px">${tip.home} : ${tip.away}</td>
+            <td style="text-align:center;padding:6px;color:${correct?'var(--green)':'var(--text-muted)'};font-weight:${correct?'600':'400'}">${tip.winner||'?'}</td>
+            <td style="text-align:center;padding:6px">${pts!==null?ptsBadge(pts):''}</td>
+          </tr>`;
+        }).join('')}</tbody>
       </table>
     </div>`;
   }
-
-  el.innerHTML = html;
+  el.innerHTML=html;
 }
 
-// ─── ADMIN SECTION ───────────────────────────────────────────────────────────
+// ─── STANDINGS ───────────────────────────────────────────────────────────────
+function calcStandings(matches, group) {
+  const teams={};
+  const gMatches=matches.filter(m=>m.group===group&&m.result?.winner);
+  // Collect all teams in group
+  matches.filter(m=>m.group===group).forEach(m=>{
+    [m.home,m.away].forEach(t=>{ if(!teams[t]) teams[t]={name:t,gp:0,w:0,otw:0,otl:0,l:0,gf:0,ga:0,pts:0}; });
+  });
+  for(const m of gMatches){
+    const ot=m.result.overtime||false;
+    const h=teams[m.home], a=teams[m.away];
+    if(!h||!a) continue;
+    h.gp++; a.gp++;
+    h.gf+=parseInt(m.result.home); h.ga+=parseInt(m.result.away);
+    a.gf+=parseInt(m.result.away); a.ga+=parseInt(m.result.home);
+    if(m.result.winner===m.home){
+      if(ot){ h.otw++;h.pts+=2; a.otl++;a.pts+=1; }
+      else { h.w++;h.pts+=3; a.l++; }
+    } else {
+      if(ot){ a.otw++;a.pts+=2; h.otl++;h.pts+=1; }
+      else { a.w++;a.pts+=3; h.l++; }
+    }
+  }
+  const list=Object.values(teams);
+  list.sort((a,b)=>b.pts-a.pts||(b.gf-b.ga)-(a.gf-a.ga)||b.gf-a.gf);
+  return list;
+}
 
-async function renderAdmin() {
-  const el = document.getElementById('tab-admin');
-  if (!el) return;
-  const matches = await getMatches();
-  const usersSnap = await getDocs(collection(db, 'users'));
-  const users = [];
-  usersSnap.forEach(d => users.push(d.data()));
+window.switchStandingsGroup=function(g,btn){
+  standingsGroup=g;
+  document.querySelectorAll('.group-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const el=document.getElementById('standings-body');
+  if(el) el.innerHTML=renderStandingsTable(matchesCache,g);
+};
 
-  el.innerHTML = `
+function renderStandingsTable(matches,group){
+  const list=calcStandings(matches,group);
+  if(!list.length) return '<div class="empty">Žiadne výsledky ešte.</div>';
+  // Top 4 postupujú do play-off
+  return `<table class="standings-table">
+    <thead><tr>
+      <th>#</th><th style="text-align:left">Tím</th><th>Z</th><th>V</th><th>VP</th><th>PP</th><th>P</th><th>G</th><th title="Body">B</th>
+    </tr></thead>
+    <tbody>${list.map((t,i)=>{
+      const sk=['slovensko','slovakia','svk'].some(k=>t.name.toLowerCase().includes(k));
+      const playoff=i<4;
+      return `<tr class="${sk?'highlight':''} ${i===3?'playoff-line':''}">
+        <td style="color:var(--text-hint);font-size:12px">${i+1}</td>
+        <td>${sk?'🇸🇰 ':''}<strong>${t.name}</strong>${!playoff?'<span style="font-size:10px;color:var(--text-hint);margin-left:4px">vypad.</span>':''}</td>
+        <td>${t.gp}</td>
+        <td>${t.w}</td>
+        <td>${t.otw}</td>
+        <td>${t.otl}</td>
+        <td>${t.l}</td>
+        <td style="font-size:12px">${t.gf}:${t.ga}</td>
+        <td><strong>${t.pts}</strong></td>
+      </tr>`;
+    }).join('')}</tbody>
+  </table>
+  <div style="font-size:11px;color:var(--text-hint);margin-top:10px">Z=zápasy · V=výhra · VP=výhra po predĺžení · PP=prehra po predĺžení · P=prehra · G=góly · B=body<br>Čierna linka = hranica postupu do play-off</div>`;
+}
+
+async function renderStandings(){
+  const el=document.getElementById('tab-standings'); if(!el) return;
+  el.innerHTML='<div class="loading"><div class="spinner"></div>Počítam...</div>';
+  await getMatches();
+  el.innerHTML=`
+  <div class="card">
+    <div class="group-tabs">
+      <button class="group-tab ${standingsGroup==='A'?'active':''}" onclick="switchStandingsGroup('A',this)">Skupina A</button>
+      <button class="group-tab ${standingsGroup==='B'?'active':''}" onclick="switchStandingsGroup('B',this)">Skupina B</button>
+    </div>
+    <div id="standings-body">${renderStandingsTable(matchesCache,standingsGroup)}</div>
+  </div>
+  <div class="card" style="font-size:12px;color:var(--text-muted)">
+    Tabuľka sa počíta automaticky z výsledkov zadaných adminom. Aktualizuje sa po každom uloženom výsledku.
+  </div>`;
+}
+
+// ─── LEADERBOARD ─────────────────────────────────────────────────────────────
+async function renderLeaderboard(){
+  const el=document.getElementById('tab-leaderboard'); if(!el) return;
+  el.innerHTML='<div class="loading"><div class="spinner"></div>Počítam body...</div>';
+  const matches=await getMatches();
+  await loadAllTips();
+  const played=matches.filter(m=>m.result?.winner);
+  const usersSnap=await getDocs(collection(db,'users'));
+  const users=[]; usersSnap.forEach(d=>users.push(d.data()));
+  const scores=[];
+  for(const u of users){
+    const tips=await getAllTipsForUser(u.name);
+    let pts=0,exact=0,exactSk=0,skPts=0;
+    for(const m of played){
+      const tip=tips[m.id], sk=isSK(m), p=calcPts(tip,m.result,sk);
+      if(p!==null){
+        pts+=p;
+        if(tip&&tip.home==m.result.home&&tip.away==m.result.away&&tip.winner===m.result.winner){exact++;if(sk)exactSk++;}
+        if(sk)skPts+=p;
+      }
+    }
+    scores.push({name:u.name,pts,exact,exactSk,skPts});
+  }
+  scores.sort((a,b)=>b.pts-a.pts||b.exact-a.exact||b.exactSk-a.exactSk||b.skPts-a.skPts);
+  el.innerHTML=`
+  <div class="card" style="margin-bottom:12px">
+    <div class="stats-grid">
+      ${[['Hráči',users.length],['Zápasy',matches.length],['Odohrané',played.length]].map(([l,v])=>`
+      <div class="stat-box"><div class="stat-val">${v}</div><div class="stat-lbl">${l}</div></div>`).join('')}
+    </div>
+  </div>
+  <div class="card">
+    ${scores.length?scores.map((s,i)=>`
+    <div class="lb-row">
+      <div class="lb-rank">${rankEmoji(i,scores.length)}</div>
+      <div class="lb-info">
+        <div class="lb-name">${s.name}${s.name===currentUser?' 👤':''}</div>
+        <div class="lb-sub">Presné: ${s.exact} · SK presné: ${s.exactSk} · SK body: ${s.skPts}</div>
+      </div>
+      <div class="lb-pts">${s.pts}</div>
+    </div>`).join(''):'<div class="empty">Zatiaľ žiadne skóre.</div>'}
+  </div>
+  ${scores.length>1?`<div class="card" style="font-size:13px;color:var(--text-muted)">
+    💸 <strong style="color:var(--text)">${scores[scores.length-1].name}</strong> zabezpečí hlavnú cenu.
+  </div>`:''}`;
+}
+
+// ─── ADMIN ───────────────────────────────────────────────────────────────────
+async function renderAdmin(){
+  const el=document.getElementById('tab-admin'); if(!el) return;
+  const matches=await getMatches();
+  const usersSnap=await getDocs(collection(db,'users'));
+  const users=[]; usersSnap.forEach(d=>users.push(d.data()));
+
+  el.innerHTML=`
   <div class="card">
     <div class="card-title">Pridať zápas</div>
     <div id="add-match-msg"></div>
     <div class="form-row"><div><label>Domáci tím</label><input type="text" id="am-home" placeholder="Slovensko" /></div><div><label>Hosťujúci tím</label><input type="text" id="am-away" placeholder="Kanada" /></div></div>
-    <div class="form-row"><div><label>Dátum a čas výkopu</label><input type="datetime-local" id="am-kickoff" /></div><div><label>Skupina (voliteľné)</label><input type="text" id="am-group" placeholder="A" /></div></div>
+    <div class="form-row"><div><label>Dátum a čas výkopu</label><input type="datetime-local" id="am-kickoff" /></div><div><label>Skupina</label><input type="text" id="am-group" placeholder="A / ŠF / SF / Finále" /></div></div>
     <button class="btn btn-primary" onclick="doAddMatch()">Pridať zápas</button>
   </div>
   <div class="card">
     <div class="card-title">Zápasy (${matches.length})</div>
-    ${matches.length ? matches.map(m => `
+    ${matches.length?matches.map(m=>`
     <div class="match-item">
       <div style="display:flex;justify-content:space-between;align-items:flex-start">
         <div>
-          <div style="font-size:14px;font-weight:600">${m.home} – ${m.away} ${isSK(m) ? '<span class="badge badge-sk">SK</span>' : ''}</div>
-          <div style="font-size:12px;color:var(--text-muted)">${m.kickoff ? fmtTime(m.kickoff) : 'Bez výkopu'} · ${isLocked(m) ? '<span style="color:var(--red)">uzamknuté</span>' : 'otvorené'}${m.result?.winner ? ' · ' + m.result.home + ':' + m.result.away + ' (' + m.result.winner + ')' : ''}</div>
+          <div style="font-size:14px;font-weight:600">${m.home} – ${m.away} ${isSK(m)?'<span class="badge badge-sk">SK</span>':''}</div>
+          <div style="font-size:12px;color:var(--text-muted)">${m.kickoff?fmtTime(m.kickoff):'Bez výkopu'} · ${isLocked(m)?'<span style="color:var(--red)">uzamknuté</span>':'otvorené'} · Sk: ${m.group||'—'}${m.result?.winner?' · '+m.result.home+':'+m.result.away+' ('+m.result.winner+')'+(m.result.overtime?' '+(m.result.shootout?'N':'P'):''):''}</div>
         </div>
-        <button class="btn btn-danger" onclick="doDeleteMatch('${m.id}')">Zmazať</button>
+        <div style="display:flex;gap:6px">
+          <button class="btn btn-warning" onclick="toggleEditMatch('${m.id}')">✏️</button>
+          <button class="btn btn-danger" onclick="doDeleteMatch('${m.id}')">🗑</button>
+        </div>
       </div>
-    </div>`).join('') : '<div class="empty">Žiadne zápasy.</div>'}
+      <div id="edit-${m.id}" style="display:none" class="edit-form">
+        <div class="form-row">
+          <div><label>Domáci</label><input type="text" id="eh-${m.id}" value="${m.home}" /></div>
+          <div><label>Hosť</label><input type="text" id="ea-${m.id}" value="${m.away}" /></div>
+        </div>
+        <div class="form-row">
+          <div><label>Výkop</label><input type="datetime-local" id="ek-${m.id}" value="${m.kickoff?new Date(m.kickoff).toISOString().slice(0,16):''}" /></div>
+          <div><label>Skupina</label><input type="text" id="eg-${m.id}" value="${m.group||''}" /></div>
+        </div>
+        <button class="btn btn-primary" style="margin-top:4px" onclick="doEditMatch('${m.id}')">Uložiť zmeny</button>
+        <div id="edit-msg-${m.id}"></div>
+      </div>
+    </div>`).join(''):'<div class="empty">Žiadne zápasy.</div>'}
   </div>
   <div class="card">
     <div class="card-title">Registrovaní hráči (${users.length})</div>
-    ${users.map(u => `
+    ${users.map(u=>`
     <div style="padding:8px 0;border-bottom:1px solid var(--border)">
       <div style="display:flex;justify-content:space-between;align-items:center;font-size:13px">
         <span style="font-weight:500">${u.name}</span>
@@ -715,123 +753,68 @@ async function renderAdmin() {
           <button class="btn btn-danger" onclick="doDeleteUser('${u.name}')">Odstrániť</button>
         </div>
       </div>
-      <div id="pin-change-${u.name.toLowerCase().replace(/\s/g,'_')}" style="display:none;margin-top:8px;display:none">
+      <div id="pin-change-${u.name.toLowerCase().replace(/\s/g,'_')}" style="display:none;margin-top:8px">
         <div style="display:flex;gap:8px;align-items:flex-end">
           <div style="flex:1"><label>Nový PIN</label><input type="password" id="new-pin-${u.name.toLowerCase().replace(/\s/g,'_')}" placeholder="4–6 číslic" maxlength="6" /></div>
           <button class="btn btn-primary btn-small" onclick="doChangePin('${u.name}')">Uložiť</button>
         </div>
         <div id="pin-msg-${u.name.toLowerCase().replace(/\s/g,'_')}"></div>
       </div>
-    </div>`).join('') || '<div class="empty">Nikto sa ešte nezaregistroval.</div>'}
+    </div>`).join('')||'<div class="empty">Nikto sa ešte nezaregistroval.</div>'}
   </div>`;
 }
 
-window.doAddMatch = async function() {
-  const home = document.getElementById('am-home').value.trim();
-  const away = document.getElementById('am-away').value.trim();
-  const kickoff = document.getElementById('am-kickoff').value;
-  const group = document.getElementById('am-group').value.trim();
-  if (!home || !away) { msg('add-match-msg', 'Zadaj oba tímy.', 'err'); return; }
-  await addMatchDB({ home, away, kickoff: kickoff ? new Date(kickoff).getTime() : null, group: group || null, result: null });
-  msg('add-match-msg', '✓ Zápas pridaný.', 'ok');
-  ['am-home','am-away','am-kickoff','am-group'].forEach(id => document.getElementById(id).value = '');
-  setTimeout(() => renderAdmin(), 600);
+window.toggleEditMatch=function(id){
+  const el=document.getElementById('edit-'+id);
+  if(el) el.style.display=el.style.display==='none'?'block':'none';
 };
-window.doDeleteMatch = async function(id) {
-  if (!confirm('Zmazať tento zápas?')) return;
-  await deleteMatchDB(id);
+window.doEditMatch=async function(id){
+  const home=document.getElementById('eh-'+id)?.value.trim();
+  const away=document.getElementById('ea-'+id)?.value.trim();
+  const kickoff=document.getElementById('ek-'+id)?.value;
+  const group=document.getElementById('eg-'+id)?.value.trim();
+  if(!home||!away){msg('edit-msg-'+id,'Zadaj oba tímy.','err');return;}
+  await setDoc(doc(db,'matches',id),{home,away,kickoff:kickoff?new Date(kickoff).getTime():null,group:group||null},{merge:true});
+  msg('edit-msg-'+id,'✓ Zápas aktualizovaný.','ok');
+  setTimeout(()=>renderAdmin(),800);
+};
+window.doAddMatch=async function(){
+  const home=document.getElementById('am-home').value.trim(), away=document.getElementById('am-away').value.trim();
+  const kickoff=document.getElementById('am-kickoff').value, group=document.getElementById('am-group').value.trim();
+  if(!home||!away){msg('add-match-msg','Zadaj oba tímy.','err');return;}
+  const id='match_'+Date.now();
+  await setDoc(doc(db,'matches',id),{id,home,away,kickoff:kickoff?new Date(kickoff).getTime():null,group:group||null,result:null});
+  msg('add-match-msg','✓ Zápas pridaný.','ok');
+  ['am-home','am-away','am-kickoff','am-group'].forEach(i=>{ const el=document.getElementById(i); if(el) el.value=''; });
+  setTimeout(()=>renderAdmin(),600);
+};
+window.doDeleteMatch=async function(id){
+  if(!confirm('Zmazať tento zápas?')) return;
+  await deleteDoc(doc(db,'matches',id));
   renderAdmin();
 };
-window.doDeleteUser = async function(name) {
-  if (!confirm(`Odstrániť hráča "${name}"? Zmažú sa aj všetky jeho tipy.`)) return;
-  await deleteDoc(doc(db, 'users', name.toLowerCase()));
-  const tipsSnap = await getDocs(collection(db, 'tips'));
-  const toDelete = [];
-  tipsSnap.forEach(d => { if (d.data().user?.toLowerCase() === name.toLowerCase()) toDelete.push(d.id); });
-  for (const id of toDelete) await deleteDoc(doc(db, 'tips', id));
+window.doDeleteUser=async function(name){
+  if(!confirm(`Odstrániť hráča "${name}"? Zmažú sa aj všetky jeho tipy.`)) return;
+  await deleteDoc(doc(db,'users',name.toLowerCase()));
+  const tipsSnap=await getDocs(collection(db,'tips'));
+  const toDelete=[];
+  tipsSnap.forEach(d=>{ if(d.data().user?.toLowerCase()===name.toLowerCase()) toDelete.push(d.id); });
+  for(const id of toDelete) await deleteDoc(doc(db,'tips',id));
   renderAdmin();
 };
-window.togglePinChange = function(name) {
-  const key = name.toLowerCase().replace(/\s/g, '_');
-  const el = document.getElementById('pin-change-' + key);
-  if (!el) return;
-  el.style.display = el.style.display === 'none' ? 'block' : 'none';
+window.togglePinChange=function(name){
+  const key=name.toLowerCase().replace(/\s/g,'_');
+  const el=document.getElementById('pin-change-'+key);
+  if(el) el.style.display=el.style.display==='none'?'block':'none';
 };
-window.doChangePin = async function(name) {
-  const key = name.toLowerCase().replace(/\s/g, '_');
-  const newPin = document.getElementById('new-pin-' + key)?.value.trim();
-  const msgEl = document.getElementById('pin-msg-' + key);
-  if (!newPin || newPin.length < 4) {
-    if (msgEl) msgEl.innerHTML = '<div class="msg msg-err">PIN musí mať aspoň 4 číslice.</div>';
-    return;
-  }
-  await setDoc(doc(db, 'users', name.toLowerCase()), { pin: newPin }, { merge: true });
-  if (msgEl) msgEl.innerHTML = '<div class="msg msg-ok">✓ PIN zmenený.</div>';
-  setTimeout(() => { if (msgEl) msgEl.innerHTML = ''; }, 3000);
+window.doChangePin=async function(name){
+  const key=name.toLowerCase().replace(/\s/g,'_');
+  const newPin=document.getElementById('new-pin-'+key)?.value.trim();
+  if(!newPin||newPin.length<4){msg('pin-msg-'+key,'PIN musí mať aspoň 4 číslice.','err');return;}
+  await setDoc(doc(db,'users',name.toLowerCase()),{pin:newPin},{merge:true});
+  msg('pin-msg-'+key,'✓ PIN zmenený.','ok');
 };
-window.doLogin = doLogin;
-window.doRegister = doRegister;
-window.doAdminLogin = doAdminLogin;
-window.logout = logout;
-window.switchTab = switchTab;
 
-// ─── LEADERBOARD ─────────────────────────────────────────────────────────────
-
-async function renderLeaderboard() {
-  const el = document.getElementById('tab-leaderboard');
-  if (!el) return;
-  el.innerHTML = '<div class="loading"><div class="spinner"></div>Počítam body...</div>';
-  const matches = await getMatches();
-  const played = matches.filter(m => m.result?.winner);
-  const usersSnap = await getDocs(collection(db, 'users'));
-  const users = [];
-  usersSnap.forEach(d => users.push(d.data()));
-
-  const scores = [];
-  for (const u of users) {
-    const tips = await getAllTipsForUser(u.name);
-    let pts = 0, exact = 0, exactSk = 0, skPts = 0;
-    for (const m of played) {
-      const tip = tips[m.id];
-      const sk = isSK(m);
-      const p = calcPts(tip, m.result, sk);
-      if (p !== null) {
-        pts += p;
-        if (tip && tip.home == m.result.home && tip.away == m.result.away && tip.winner === m.result.winner) {
-          exact++; if (sk) exactSk++;
-        }
-        if (sk) skPts += p;
-      }
-    }
-    scores.push({ name: u.name, pts, exact, exactSk, skPts });
-  }
-  scores.sort((a, b) => b.pts - a.pts || b.exact - a.exact || b.exactSk - a.exactSk || b.skPts - a.skPts);
-
-  el.innerHTML = `
-  <div class="card">
-    <div class="stats-grid">
-      <div class="stat-box"><div class="stat-val">${users.length}</div><div class="stat-lbl">Hráči</div></div>
-      <div class="stat-box"><div class="stat-val">${matches.length}</div><div class="stat-lbl">Zápasy</div></div>
-      <div class="stat-box"><div class="stat-val">${played.length}</div><div class="stat-lbl">Odohrané</div></div>
-    </div>
-  </div>
-  <div class="card">
-    ${scores.length ? scores.map((s, i) => `
-    <div class="lb-row">
-      <div class="lb-rank">${rankEmoji(i, scores.length)}</div>
-      <div class="lb-info">
-        <div class="lb-name">${s.name}</div>
-        <div class="lb-sub">Presné výsledky: ${s.exact} · SK presné: ${s.exactSk} · SK body: ${s.skPts}</div>
-      </div>
-      <div class="lb-pts">${s.pts}</div>
-    </div>`).join('') : '<div class="empty">Zatiaľ žiadne skóre.</div>'}
-  </div>
-  ${scores.length > 1 ? `<div class="card" style="font-size:13px;color:var(--text-muted)">
-    💸 <strong style="color:var(--text)">${scores[scores.length-1].name}</strong> zabezpečí hlavnú cenu. Všetci medzi 1. a posledným miestom prinášajú občerstvenie.
-  </div>` : ''}`;
-}
-
-// ─── INIT ────────────────────────────────────────────────────────────────────
 renderLogin();
 </script>
 </body>
